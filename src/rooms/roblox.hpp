@@ -2,7 +2,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/binding/FMODAudioEngine.hpp>
 #include "../funcs.hpp"
-#include <random>
 using namespace geode::prelude;
 
 namespace rooms {
@@ -68,4 +67,15 @@ namespace rooms {
         auto advySprite = CCSprite::create("advy.png"_spr);
         advySprite->setScale(2.5f);
         auto advy = CCMenuItemSpriteExtra::create(advySprite, nullptr, things, menu_selector(roblox_stuff::advy));
-        advy->setPosition({win.width / 
+        advy->setPosition({win.width / 12.f, win.height / 2.f});
+        advy->setID("advy"_spr);
+
+        auto menu = CCMenu::create();
+        menu->setPosition({0, 0});
+        menu->addChild(drake);
+        menu->addChild(diddy);
+        menu->addChild(advy);
+        menu->setID("room-menu"_spr);
+        return menu;
+    }
+}
