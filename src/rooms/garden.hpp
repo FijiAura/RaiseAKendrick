@@ -8,6 +8,7 @@ namespace rooms {
     class garden_stuff : public cocos2d::CCNode {
     public:
         cocos2d::CCLayer* parent = nullptr;
+
         void peashooter(CCObject*) {
             if (parent) {
                 std::vector<std::string> messages = {
@@ -33,7 +34,7 @@ namespace rooms {
                 std::string message = messages[rand() % messages.size()];
                 FLAlertLayer::create("Todd the Peashooter", message, "OK")->show();
             }
-        };
+        }
 
         void touchgrass(CCObject*) {
             if (parent) {
@@ -41,7 +42,6 @@ namespace rooms {
                 FMODAudioEngine::sharedEngine()->playEffect("pou_no.mp3"_spr);
             }
         }
-
     };
 
     inline cocos2d::CCMenu* thegarden(cocos2d::CCLayer* parent = nullptr) {
@@ -52,7 +52,7 @@ namespace rooms {
 
         auto p = CCSprite::create("pet_peashooter.png"_spr);
         p->setScale(1.1f);
-        auto peashooter = CCMenuItemSpriteExtra::create(p, nullptr, things, menu_selector(livingroom_stuff::peashooter));
+        auto peashooter = CCMenuItemSpriteExtra::create(p, nullptr, things, menu_selector(garden_stuff::peashooter));
         peashooter->setPosition({win.width / 4.f, win.height / 2.f});
         peashooter->setID("peashooter"_spr);
 
@@ -60,13 +60,12 @@ namespace rooms {
         menu->setPosition({0,0});
         menu->addChild(peashooter);
         menu->setID("room-menu"_spr);
-        return menu;
 
-        auto grass = CCMenuItemSpriteExtra::create(CCSprite::create("touchgrass.png"_spr), nullptr, things, menu_selector(outside_stuff::touchgrass));
+        auto grass = CCMenuItemSpriteExtra::create(CCSprite::create("touchgrass.png"_spr), nullptr, things, menu_selector(garden_stuff::touchgrass));
         grass->setPosition({win.width - 120.f, win.height / 1.5f});
         grass->setID("grass"_spr);
-        
+
+        menu->addChild(grass);
+        return menu;
     }
-
 }
-
