@@ -45,7 +45,7 @@ namespace rooms {
 
     };
 
-    inline cocos2d::CCMenu* thebasement(cocos2d::CCLayer* parent = nullptr) {
+    inline cocos2d::CCMenu* theroblox(cocos2d::CCLayer* parent = nullptr) {
         auto win = CCDirector::get()->getWinSize();
         auto things = new roblox_stuff();
         things->parent = parent;
