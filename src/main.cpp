@@ -14,6 +14,7 @@
 #include "rooms/car.hpp"
 #include "rooms/mcdonalds.hpp"
 #include "rooms/garden.hpp"
+#include "rooms/roblox.hpp"
 using namespace geode::prelude;
 
 // i lost a lot of sleep and brain cells making this mod. i only have 5 hours to sleep every night and now its done and its worth it!
@@ -147,6 +148,9 @@ public:
 		} else if (name == "playground") {
 			devlin::set_room(this, "Playground", "playground.png"_spr);
  			weeeeee = rooms::theplayground(this);
+		} else if (name == "roblox") {
+			devlin::set_room(this, "Roblox", "roblox.png"_spr);
+ 			weeeeee = rooms::theroblox(this);
 		} else if (name == "basement") {
 			devlin::set_room(this, "Basement", "basement.png"_spr);
  			weeeeee = rooms::thebasement(this);
@@ -201,4 +205,5 @@ class $modify(KLMenuLayer, MenuLayer) {
 		}
 		CCDirector::get()->replaceScene(CCTransitionFade::create(0.5f, KendrickLayer::scene()));
 	}
+
 };
