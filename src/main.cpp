@@ -22,7 +22,7 @@ using namespace geode::prelude;
 class KendrickLayer : public cocos2d::CCLayer {
 public:
 	CREATE_FUNC(KendrickLayer);
-	std::vector<std::string> rooms = {"livingroom", "bedroom", "bathroom", "kitchen", "outside", "snoopland", "playground", "basement", "car", "mcdonalds", "garden"};
+	std::vector<std::string> rooms = {"livingroom", "bedroom", "bathroom", "kitchen", "outside", "snoopland", "playground", "roblox", "basement", "car", "mcdonalds", "garden"};
 	int currentRoom = 0;
 
 	bool init() override {
@@ -207,3 +207,4 @@ class $modify(KLMenuLayer, MenuLayer) {
 	}
 
 };
+
