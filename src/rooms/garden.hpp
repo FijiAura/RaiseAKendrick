@@ -33,7 +33,15 @@ namespace rooms {
                 std::string message = messages[rand() % messages.size()];
                 FLAlertLayer::create("Todd the Peashooter", message, "OK")->show();
             }
+        };
+
+        void touchgrass(CCObject*) {
+            if (parent) {
+                devlin::set_emotion(parent, "angry.gif"_spr, 2.f, 0.3f, 0.2f);
+                FMODAudioEngine::sharedEngine()->playEffect("pou_no.mp3"_spr);
+            }
         }
+
     };
 
     inline cocos2d::CCMenu* thegarden(cocos2d::CCLayer* parent = nullptr) {
@@ -53,6 +61,12 @@ namespace rooms {
         menu->addChild(peashooter);
         menu->setID("room-menu"_spr);
         return menu;
+
+        auto grass = CCMenuItemSpriteExtra::create(CCSprite::create("touchgrass.png"_spr), nullptr, things, menu_selector(outside_stuff::touchgrass));
+        grass->setPosition({win.width - 120.f, win.height / 1.5f});
+        grass->setID("grass"_spr);
+        
     }
 
 }
+
